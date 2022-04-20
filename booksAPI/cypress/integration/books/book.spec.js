@@ -4,7 +4,7 @@ let id;
 context("Network Requests", () => {
   beforeEach(() => {
     cy.visit("https://example.cypress.io/commands/network-requests");
-    title = "First api.book. ";
+    title = "First api.book";
   });
 
   // Manage HTTP requests in your app
@@ -85,6 +85,20 @@ context("Network Requests", () => {
       }
     ).then((response) => {
       expect(response.status).to.eq(200);
+    });
+  });
+
+  it("GET deleted book", () => {
+    // https://on.cypress.io/request
+    cy.request({
+      // use JSON otherwise will not work
+      method: "GET",
+      url:
+        "https://f4hatlr72b.execute-api.us-east-1.amazonaws.com/production/" +
+        id,
+      failOnStatusCode: false,
+    }).then((response) => {
+      expect(response.status).to.eq(404);
     });
   });
 });
