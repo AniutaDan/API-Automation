@@ -4,7 +4,7 @@ let id;
 context("Network Requests", () => {
   beforeEach(() => {
     cy.visit("https://example.cypress.io/commands/network-requests");
-    title = "First api.book";
+    title = "First api.book ";
   });
 
   // Manage HTTP requests in your app
